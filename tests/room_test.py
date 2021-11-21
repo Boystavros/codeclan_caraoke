@@ -1,5 +1,4 @@
 import unittest
-from unittest import result
 from src.room import Room
 from src.guest import Guest
 from src.song import Song
