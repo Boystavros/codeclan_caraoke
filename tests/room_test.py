@@ -2,6 +2,7 @@ import unittest
 from src.room import Room
 from src.guest import Guest
 from src.song import Song
+from src.roomtab import RoomTab
 
 
 class TestRoom(unittest.TestCase):
