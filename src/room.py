@@ -1,3 +1,5 @@
+from src.roomtab import RoomTab
+
 class Room:
     
     def __init__(self, number, max_guests):
@@ -5,8 +7,8 @@ class Room:
         self.max_guests = max_guests
         self.guests = []
         self.songs = []
-        self.entry_fee = 5.00
-
+        self.room_tab = RoomTab(number) 
+        
     def check_in(self, guest):
         if len(self.guests) < self.max_guests:
             self.guests.append(guest)

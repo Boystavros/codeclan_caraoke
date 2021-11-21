@@ -1,8 +1,8 @@
 class RoomTab:
 
-    def __init__(self, room_num, num_guests):
+    def __init__(self, room_num):
         self.room_num = room_num
-        self.guests = num_guests
+        self.guests = 0
         self.entry_fee = 5.00
         self.bill = []
 
@@ -18,3 +18,5 @@ class RoomTab:
     def calculate_bill(self):
         return self.total_entry_fees() + self.total_drinks_bill()
         
+    def increase_guests_on_tab(self):
+        self.guests += 1
