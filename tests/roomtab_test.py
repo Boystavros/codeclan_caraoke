@@ -27,7 +27,7 @@ class TestRoomTab(unittest.TestCase):
         expected = 1
         actual = self.room_tab.guests
         self.assertEqual(expected, actual)
-    
+   
     def test_add_drink_cost_to_bill(self):
         self.room_tab.add_drink_cost_to_bill(2.50)
         expected = 1
@@ -50,7 +50,15 @@ class TestRoomTab(unittest.TestCase):
         actual = self.room_tab.calculate_bill()
         self.assertEqual(expected, actual)
 
-
+    def test_reduce_bill__5_from_10(self):
+        self.room_tab.increase_guests_on_tab()
+        self.room_tab.increase_guests_on_tab()
+        self.room_tab.add_drink_cost_to_bill(2.50)
+        self.room_tab.add_drink_cost_to_bill(2.50)
+        self.room_tab.reduce_bill(5.00)
+        expected = 10.00
+        actual = self.room_tab.calculate_bill()
+        self.assertEqual(expected, actual)
 
     
     

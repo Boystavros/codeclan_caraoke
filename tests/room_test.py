@@ -79,20 +79,42 @@ class TestRoom(unittest.TestCase):
         actual = self.room.check_in(self.guest_2)
         self.assertEqual(expected, actual)
         
-    @unittest.skip
-    def test_has_entry_fee(self):
-        expected = 5.00
-        actual = self.room.entry_fee
-        self.assertEqual(expected, actual)
+    # No longer required as RoomTab now has entry fee data
+    # def test_has_entry_fee(self):
+    #     expected = 5.00
+    #     actual = self.room.entry_fee
+    #     self.assertEqual(expected, actual)
 
     def test_has_room_tab__room_1(self):
         expected = 1
         actual = self.room.room_tab.room_num
         self.assertEqual(expected, actual)
              
-    @unittest.skip
     def test_check_in_adds_guest_to_room_tab(self):
         self.room.check_in(self.guest_1)
         expected = 1
         actual = self.room.room_tab.guests
+        self.assertEqual(expected, actual)
+
+    def test_sell_drink__cost_2(self):
+        self.room.sell_drink(2.00)
+        expected = 2.00
+        actual  = self.room.room_tab.total_drinks_bill()
+        self.assertEqual(expected, actual)
+
+    def test_retrieve_bill__1_guest_1_drink(self):
+        self.room.check_in(self.guest_1)
+        self.room.sell_drink(2.50)
+        expected = 7.50
+        actual = self.room.retrieve_bill()
+        self.assertEqual(expected, actual)
+
+    
+    def test_charge_amount__5_of_10(self):
+        self.room.check_in(self.guest_1)
+        self.room.sell_drink(2.50)
+        self.room.sell_drink(2.50)
+        self.room.charge_amount(5.00)
+        expected = 5.00
+        actual = self.room.retrieve_bill()
         self.assertEqual(expected, actual)
