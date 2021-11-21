@@ -6,8 +6,8 @@ class TestSong(unittest.TestCase):
     def setUp(self):
         self.song = Song("Dreams", "Fleetwood Mac", 257)
 
-    def test_has_name(self):
-        self.assertEqual("Dreams", self.song.name)
+    def test_has_title(self):
+        self.assertEqual("Dreams", self.song.title)
 
     def test_has_artist(self):
         self.assertEqual("Fleetwood Mac", self.song.artist)

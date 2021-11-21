@@ -5,6 +5,7 @@ class Room:
         self.max_guests = max_guests
         self.guests = []
         self.songs = []
+        self.entry_fee = 5.00
 
     def check_in(self, guest):
         if len(self.guests) < self.max_guests:

@@ -9,9 +9,9 @@ class TestRoom(unittest.TestCase):
 
     def setUp(self):
         self.room = Room(1, 1)
-        self.guest_1 = Guest("Bob", 20.00)
-        self.guest_2 = Guest("Sally", 50.00)
-        self.song_1 = Song("Dreams", "Fleetwood Mac", 257)        
+        self.song_1 = Song("Dreams", "Fleetwood Mac", 257)       
+        self.guest_1 = Guest("Bob", 20.00, self.song_1)
+        self.guest_2 = Guest("Sally", 50.00, self.song_1)
 
     def test_has_number(self):
         expected = 1
@@ -78,5 +78,11 @@ class TestRoom(unittest.TestCase):
         actual = self.room.check_in(self.guest_2)
         self.assertEqual(expected, actual)
         
+    def test_has_entry_fee(self):
+        expected = 5.00
+        actual = self.room.entry_fee
+        self.assertEqual(expected, actual)
+
+    
 
         
