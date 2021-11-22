@@ -108,13 +108,15 @@ class TestRoom(unittest.TestCase):
         expected = 7.50
         actual = self.room.retrieve_bill()
         self.assertEqual(expected, actual)
-
     
-    def test_charge_amount__5_of_10(self):
+    def test_charge_guest__guest_1_5_of_10(self):
         self.room.check_in(self.guest_1)
         self.room.sell_drink(2.50)
         self.room.sell_drink(2.50)
-        self.room.charge_amount(5.00)
-        expected = 5.00
-        actual = self.room.retrieve_bill()
-        self.assertEqual(expected, actual)
+        self.room.charge_guest(self.guest_1, 5.00)
+        expected_bill = 5.00
+        actual_bill = self.room.retrieve_bill()
+        expected_guest_cash = 15.00
+        actual_guest_cash = self.guest_1.cash
+        self.assertEqual(expected_bill, actual_bill)
+        self.assertEqual(expected_guest_cash, actual_guest_cash)

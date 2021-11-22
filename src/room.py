@@ -35,5 +35,6 @@ class Room:
     def retrieve_bill(self):
         return self.room_tab.calculate_bill()
 
-    def charge_amount(self, amount):
+    def charge_guest(self, guest, amount):
         self.room_tab.reduce_bill(amount)
+        guest.reduce_cash(amount)
